@@ -492,6 +492,9 @@ function obj:removeWindow(remove_window)
         window_list[remove_index.space] = nil
     end
 
+    -- update layout
+    self:tileWindows(focused_window)
+    
     return true
 end
 
@@ -681,7 +684,7 @@ function obj:cycleWindowSize(direction)
 
     local function findNewSize(area_size, frame_size)
         -- calculate pixel widths from ratios
-        local sizes = {0.38195, 0.5, 0.61804}
+        local sizes = {0.25, 0.5, 0.75, 1}
         for index, size in ipairs(sizes) do
             sizes[index] = size * area_size
         end
